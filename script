@@ -1,0 +1,123 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "freakyware👅", HidePremium = false, SaveConfig = true, ConfigFolder = "freakyware"})
+
+--tabs
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Tab2 = Window:MakeTab({
+	Name = "teleport",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Tab3 = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--values 
+_G.farm = true
+_G.prestige = true
+_G.teleport = true
+_G.autohatch = true
+--function
+function farm()
+while _G.farm == true do
+task.wait()
+local args = {
+    [1] = {
+        ["Funny"] = "durpiei1",
+        ["Cash"] = 1000000000000000000
+    }
+}
+
+game:GetService("ReplicatedStorage").Add:FireServer(unpack(args))
+ end
+end
+
+function prestige()
+while _G.prestige == true do
+task.wait()
+local args = {
+    [1] = 10
+}
+
+game:GetService("ReplicatedStorage").Prestige:FireServer(unpack(args))
+ end
+end
+
+function autohatch()
+while _G.autohatch == true do
+task.wait(1)
+local args = {
+    [1] = workspace.EggStands.Basic,
+    [2] = 1
+}
+
+game:GetService("ReplicatedStorage").OpenEgg:FireServer(unpack(args))
+ end
+end
+--teleport
+function teleport()
+while _G.teleport == true do
+task.wait(0.5)
+local pl = game.Players.LocalPlayer.Character.HumanoidRootPart
+local location = CFrame.new(55, 210,-35)
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+wait(0.1)
+pl.CFrame = location
+ end
+end
+--toggles
+
+Tab:AddToggle({
+	Name = "auto farm",
+	Default = false,
+	Callback = function(Value)
+		_G.farm = Value
+		farm()
+	end    
+})
+
+Tab2:AddToggle({
+	Name = "autocomplete VIP obby",
+	Default = false,
+	Callback = function(Value)
+		_G.teleport = Value
+		teleport()
+	end    
+})
+
+
+Tab:AddToggle({
+	Name = "auto prestige",
+	Default = false,
+	Callback = function(Value)
+		_G.prestige = Value
+		prestige()
+	end    
+})
+
+Tab:AddToggle({
+	Name = "auto hatch",
+	Default = false,
+	Callback = function(Value)
+		_G.autohatch = Value
+		autohatch()
+	end    
+})
+
+
+Tab3:AddButton({
+	Name = "made my onmars1!",
+	Callback = function()
+      		print("button pressed")
+  	end    
+})
+OrionLib:Init()
